@@ -4,12 +4,22 @@ import "./index.css";
 import App from "./App/App";
 import * as serviceWorker from "./serviceWorker";
 
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import { fetchDataReducer } from "./redux/reducers";
+import { fetchDataReducer, searchDataReducer } from "./redux/reducers";
 import { Provider } from "react-redux";
 
-const store = createStore(fetchDataReducer, applyMiddleware(thunk));
+const rootReducer = combineReducers({ fetchDataReducer, searchDataReducer });
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+/*
+ spinner,
+ infiniteScroll,
+ map,
+ animation,
+ responsive
+*/
 
 ReactDOM.render(
   <Provider store={store}>

@@ -1,7 +1,13 @@
 import React from "react";
 import { FormControl, Form, Navbar, Nav } from "react-bootstrap";
+import { connect } from "react-redux";
+import { searchData } from "../redux/actions";
 
-export default function Search() {
+const mapDispatchToProps = dispatch => ({
+  onSearchChange: event => dispatch(searchData(event.target.value))
+});
+
+function Search(props) {
   return (
     <Navbar bg="dark" variant="dark">
       <Navbar.Brand href="#home">Meteorite Explorer</Navbar.Brand>
@@ -11,8 +17,18 @@ export default function Search() {
         <Nav.Link href="#pricing">Pricing</Nav.Link>
       </Nav>
       <Form inline>
-        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <FormControl
+          type="text"
+          placeholder="Search"
+          className="mr-sm-2"
+          onChange={props.onSearchChange}
+        />
       </Form>
     </Navbar>
   );
 }
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Search);
