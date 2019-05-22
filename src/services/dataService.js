@@ -3,7 +3,7 @@ function DataService(data) {
   this.id = data.id || "N/A";
   this.nametype = data.nametype || "N/A";
   this.recclass = data.recclass || "N/A";
-  this.mass = data.mass || "N/A";
+  this.mass = Math.floor(data.mass) || "N/A";
   this.fall = data.fall || "N/A";
   this.year = data.year ? new Date(data.year).getFullYear().toString() : "N/A";
 

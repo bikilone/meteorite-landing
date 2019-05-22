@@ -14,7 +14,6 @@ const rootReducer = combineReducers({ fetchDataReducer, searchDataReducer });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 /*
- spinner,
  infiniteScroll,
  map,
  animation,
